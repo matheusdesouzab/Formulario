@@ -122,51 +122,72 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
+                        <label class="col-3 col-form-label">Placa Veículo:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-maska="'AAA-####'" v-model="form.placaVeiculo">
+                            <small class="text-muted">Formato: {{form.placaVeiculo}}</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">Placa Veículo Mercosul:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-maska="'AAA#A##'" v-model="form.placaVeiculoMercosul">
+                            <small class="text-muted">Formato: {{form.placaVeiculoMercosul}}</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">RG:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-maska="'#*-X'" v-model="form.rg">
+                            <small class="text-muted">Formato: {{form.rg}}</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <label class="col-3 col-form-label">Data:</label>
                         <div class="col">
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" v-model="form.data">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Data/hora local:</label>
                         <div class="col">
-                            <input type="datetime-local" class="form-control">
+                            <input type="datetime-local" class="form-control" v-model="form.dataHora">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Mês:</label>
                         <div class="col">
-                            <input type="month" class="form-control">
+                            <input type="month" class="form-control" v-model="form.mes">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Semana:</label>
                         <div class="col">
-                            <input type="week" class="form-control">
+                            <input type="week" class="form-control" v-model="form.semana">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Hora:</label>
                         <div class="col">
-                            <input type="time" class="form-control">
+                            <input type="time" class="form-control" v-model="form.hora">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Cor:</label>
                         <div class="col">
-                            <input type="color" class="form-color">
+                            <input type="color" class="form-color" v-model="form.cor">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Valor limite:</label>
                         <div class="col">
-                            <input type="range" class="form-range" min="0" max="100" step="1">
+                            <input type="range" class="form-range" min="0" max="100" step="1" v-model="form.alcance">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Escondido:</label>
                         <div class="col">
-                            <input type="hidden" class="form-control">
+                            <input type="hidden" class="form-control" v-model="form.escondido">
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -222,28 +243,28 @@
                     <span>Telefone: {{form.telefone}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <span>Data:</span>
+                    <span>Data: {{ $moment(form.data).format('DD/MM/YYYY') }}</span>
                 </div>
                 <div class="mb-3 row">
-                    <span>Data/hora local:</span>
+                    <span>Data/hora local: {{ $moment(form.dataHora).format('dddd') }}</span>
                 </div>
                 <div class="mb-3 row">
-                    <span>Mês:</span>
+                    <span>Mês: </span>
                 </div>
                 <div class="mb-3 row">
-                    <span>Semana:</span>
+                    <span>Semana: {{form.semana}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <span>Hora:</span>
+                    <span>Hora: {{form.hora}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <span>Cor:</span>
+                    <span>Cor: {{form.cor}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <span>Valor limite:</span>
+                    <span>Valor limite: {{form.alcance}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <span>Escondido:</span>
+                    <span>Escondido: {{form.escondido}}</span>
                 </div>
                 <div class="mb-3 row">
                     <span>Upload:</span>
@@ -256,6 +277,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'FormularioComponent',
     data: () => ({
@@ -269,7 +291,18 @@ export default {
             cep: '',
             cpf: '',
             cnpj: '',
-            cartaoDeCredito: ''
+            cartaoDeCredito: '',
+            placaVeiculo: '',
+            placaVeiculoMercosul: '',
+            rg: '',
+            data: '',
+            dataHora: '',
+            mes: '',
+            semana: '',
+            hora: '',
+            cor: '',
+            alcance: 5,
+            escondido: ''
         }
     })
 }

@@ -1,10 +1,13 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import Maska from 'maska'
+import moment from 'moment'
 
 const app = createApp(App)
 
-app.use(Maska)
+app.use(Maska) // Formato de plugin
+app.config.globalProperties.$moment = moment
+app.config.globalProperties.$moment.locale('pt-br')
 app.mount("#app")
 
 
