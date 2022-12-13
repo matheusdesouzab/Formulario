@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-6 bg-light">
+            <div class="col-6 bg-light p-4">
                 <span class="fs-4">ENTRADA DE DADOS</span>
                 <hr>
                 <form>
@@ -14,7 +14,7 @@
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">E-mail:</label>
                         <div class="col">
-                            <input type="email" class="form-control" v-model="form.email">
+                            <input type="email" class="form-control" v-model.trim="form.email">
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -26,20 +26,20 @@
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Idade:</label>
                         <div class="col">
-                            <input type="number" class="form-control" v-model="form.idade">
+                            <input type="number" class="form-control" v-model.number="form.idade">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Gênero:</label>
                         <div class="col">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio">
+                                <input class="form-check-input" type="radio" value="feminino" v-model="form.genero">
                                 <label class="form-check-label">
                                     Feminino
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio">
+                                <input class="form-check-input" type="radio" value="masculino" v-model="form.genero">
                                 <label class="form-check-label">
                                     Masculino
                                 </label>
@@ -51,7 +51,7 @@
                         <label class="col-3 col-form-label">Licença:</label>
                         <div class="col">
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox">
+                                <input class="form-check-input" type="checkbox" v-model="form.licenca" true-value="sim" false-value="não">
                                 <label class="form-check-label">Li e aceito os termos</label>
                             </div>
                         </div>
@@ -61,25 +61,25 @@
                         <label class="col-3 col-form-label">Interesses:</label>
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
+                                <input class="form-check-input" type="checkbox" value="JavaScript" v-model="form.interesses">
                                 <label class="form-check-label">
                                     JavaScriot
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
+                                <input class="form-check-input" type="checkbox" value="VueJs" v-model="form.interesses">
                                 <label class="form-check-label">
                                     VueJS
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
+                                <input class="form-check-input" type="checkbox" value="Angular" v-model="form.interesses">
                                 <label class="form-check-label">
                                     Angular
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
+                                <input class="form-check-input" type="checkbox" value="NodeJs" v-model="form.interesses">
                                 <label class="form-check-label">
                                     NodeJS
                                 </label>
@@ -89,8 +89,36 @@
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Telefone:</label>
                         <div class="col">
-                            <input type="tel" class="form-control" pattern="[0-9]{2} [0-9]{5}-[0-9]{4}">
-                            <small class="text-muted">Formato: 11 97777-5555</small>
+                            <input type="text" class="form-control" v-maska="'(##) #####-####'" v-model="form.telefone">
+                            <small class="text-muted">Formato: {{form.telefone}}</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">CEP:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-maska="'#####-###'" v-model="form.cep">
+                            <small class="text-muted">Formato: {{form.cep}}</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">CNPJ:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-maska="'##.###.###/####-##'" v-model="form.cnpj">
+                            <small class="text-muted">Formato: {{form.cnpj}}</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">CPF:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-maska="'###.###.###-##'" v-model="form.cpf">
+                            <small class="text-muted">Formato: {{form.cpf}}</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">Cartão de credito:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-maska="'#### #### #### ####'" v-model="form.cartaoDeCredito">
+                            <small class="text-muted">Formato: {{form.cartaoDeCredito}}</small>
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -160,65 +188,65 @@
             </div>
 
             
-            <div class="col-6 text-white bg-secondary">
+            <div class="col-6 text-white bg-secondary p-4">
                 <span class="fs-4">ESTADO DO OBJETO</span>
                 <hr>
                 <div class="mb-5 row">
-                    <spam>Estado do objeto</spam>
+                    <span>Estado do objeto</span>
                 </div>
 
                 <span class="fs-4">SAÍDA DE DADOS</span>
                 <hr>
                 <div class="mb-3 row">
-                    <spam>Nome: {{form.nome}}</spam>
+                    <span>Nome: {{form.nome}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>E-mail: {{form.email}}</spam>
+                    <span>E-mail: {{form.email}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Senha: {{form.senha}}</spam>
+                    <span>Senha: {{form.senha}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Idade: {{form.idade}}</spam>
+                    <span>Idade: {{form.idade}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Gênero:</spam>
+                    <span>Gênero: {{form.genero}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Licença:</spam>
+                    <span>Licença: {{form.licenca}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Interesses:</spam>
+                    <span>Interesses: {{form.interesses}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Telefone:</spam>
+                    <span>Telefone: {{form.telefone}}</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Data:</spam>
+                    <span>Data:</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Data/hora local:</spam>
+                    <span>Data/hora local:</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Mês:</spam>
+                    <span>Mês:</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Semana:</spam>
+                    <span>Semana:</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Hora:</spam>
+                    <span>Hora:</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Cor:</spam>
+                    <span>Cor:</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Valor limite:</spam>
+                    <span>Valor limite:</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Escondido:</spam>
+                    <span>Escondido:</span>
                 </div>
                 <div class="mb-3 row">
-                    <spam>Upload:</spam>
+                    <span>Upload:</span>
                 </div>  
             </div>
         </div>
@@ -234,7 +262,14 @@ export default {
         form: {
             nome: '',
             email: '',
-            senha: ''
+            senha: '',
+            interesses: [],
+            genero: '',
+            telefone: '',
+            cep: '',
+            cpf: '',
+            cnpj: '',
+            cartaoDeCredito: ''
         }
     })
 }
