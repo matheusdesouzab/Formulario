@@ -6,6 +6,10 @@
 
 Projeto desenvolvido a partir do curso de [Desenvolvimento Web Avançado 2022 com Vue (v2 e v3) e Vuex](https://www.udemy.com/course/desenvolvimento-web-avancado-com-vue-strapi-vuex-e-vuetify/). No **Projeto Formulário** foi possível testar as mais diversas formas de formatação de campos de formulário, como também foi feito o uso dos pacotes [maska](https://beholdr.github.io/maska/#/?id=live-demo) - que possui diversas funcionalidades de máscara e do pacote [moment](https://momentjs.com/), usado na formatação de data e hora.
 
+![Captura de tela_20221214_073713](https://user-images.githubusercontent.com/60266964/207572996-b702c99f-766c-4fa9-bc70-b0e293fc1229.png)
+
+![Captura de tela_20221214_073856](https://user-images.githubusercontent.com/60266964/207573303-29ccac5d-1a5f-49f7-95f0-9b3edff8b246.png)
+
 ## Tecnologias utilizadas
 
 <div style="display: inline_block">
