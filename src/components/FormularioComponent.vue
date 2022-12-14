@@ -1,8 +1,8 @@
 <template>
-    <div class="container">
+    <div class="container-fluid border border-dark">
         <div class="row">
-            <div class="col-6 bg-light p-4">
-                <span class="fs-4">ENTRADA DE DADOS</span>
+            <div class="col-6 bg-light p-4 ">
+                <span class="fs-4 fw-bold">ENTRADA DE DADOS</span>
                 <hr>
                 <form @reset.prevent="resetar()">
                     <div class="mb-3 row">
@@ -119,36 +119,6 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="col-3 col-form-label">Cartão de credito:</label>
-                        <div class="col">
-                            <input type="text" class="form-control" v-maska="'#### #### #### ####'"
-                                v-model="form.cartaoDeCredito">
-                            <small class="text-muted">Formato: {{ form.cartaoDeCredito }}</small>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label class="col-3 col-form-label">Placa Veículo:</label>
-                        <div class="col">
-                            <input type="text" class="form-control" v-maska="'AAA-####'" v-model="form.placaVeiculo">
-                            <small class="text-muted">Formato: {{ form.placaVeiculo }}</small>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label class="col-3 col-form-label">Placa Veículo Mercosul:</label>
-                        <div class="col">
-                            <input type="text" class="form-control" v-maska="'AAA#A##'"
-                                v-model="form.placaVeiculoMercosul">
-                            <small class="text-muted">Formato: {{ form.placaVeiculoMercosul }}</small>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label class="col-3 col-form-label">RG:</label>
-                        <div class="col">
-                            <input type="text" class="form-control" v-maska="'#*-X'" v-model="form.rg">
-                            <small class="text-muted">Formato: {{ form.rg }}</small>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
                         <label class="col-3 col-form-label">Data:</label>
                         <div class="col">
                             <input type="date" class="form-control" v-model="form.data">
@@ -178,6 +148,37 @@
                             <input type="time" class="form-control" v-model="form.hora">
                         </div>
                     </div>
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">Cartão de credito:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-maska="'#### #### #### ####'"
+                                v-model="form.cartaoDeCredito">
+                            <small class="text-muted">Formato: {{ form.cartaoDeCredito }}</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">Placa Veículo:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-maska="'AAA-####'" v-model="form.placaVeiculo">
+                            <small class="text-muted">Formato: {{ form.placaVeiculo }}</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">Placa Veículo Mercosul:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-maska="'AAA#A##'"
+                                v-model="form.placaVeiculoMercosul">
+                            <small class="text-muted">Formato: {{ form.placaVeiculoMercosul }}</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-3 col-form-label">RG:</label>
+                        <div class="col">
+                            <input type="text" class="form-control" v-maska="'#*-X'" v-model="form.rg">
+                            <small class="text-muted">Formato: {{ form.rg }}</small>
+                        </div>
+                    </div>
+                 
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label">Cor:</label>
                         <div class="col">
@@ -237,15 +238,8 @@
                 </form>
             </div>
 
-
             <div class="col-6 text-white bg-secondary p-4">
-                <span class="fs-4">ESTADO DO OBJETO</span>
-                <hr>
-                <div class="mb-5 row">
-                    <span>Estado do objeto</span>
-                </div>
-
-                <span class="fs-4">SAÍDA DE DADOS</span>
+                <span class="fs-4 fw-bold">ESTADO DO OBJETO</span>
                 <hr>
                 <div class="mb-3 row">
                     <span>Nome: {{ form.nome }}</span>
@@ -272,19 +266,40 @@
                     <span>Telefone: {{ form.telefone }}</span>
                 </div>
                 <div class="mb-3 row">
+                    <span>CEP: {{ form.cep }}</span>
+                </div>
+                <div class="mb-3 row">
+                    <span>CNPJ: {{ form.cnpj }}</span>
+                </div>
+                <div class="mb-3 row">
+                    <span>CPF: {{ form.cpf }}</span>
+                </div>
+                <div class="mb-3 row">
                     <span>Data: {{ $moment(form.data).format('DD/MM/YYYY') }}</span>
                 </div>
                 <div class="mb-3 row">
                     <span>Data/hora local: {{ $moment(form.dataHora).format('dddd') }}</span>
                 </div>
                 <div class="mb-3 row">
-                    <span>Mês: </span>
+                    <span>Mês: {{form.mes}}</span>
                 </div>
                 <div class="mb-3 row">
                     <span>Semana: {{ form.semana }}</span>
                 </div>
                 <div class="mb-3 row">
                     <span>Hora: {{ form.hora }}</span>
+                </div>
+                <div class="mb-3 row">
+                    <span>Cartão de credito: {{ form.cartaoDeCredito }}</span>
+                </div>
+                <div class="mb-3 row">
+                    <span>Placa de veículo: {{ form.placaVeiculo }}</span>
+                </div>
+                <div class="mb-3 row">
+                    <span>Placa de veículo Mercosul: {{ form.placaVeiculoMercosul }}</span>
+                </div>
+                <div class="mb-3 row">
+                    <span>RG: {{ form.rg }}</span>
                 </div>
                 <div class="mb-3 row">
                     <span>Cor: {{ form.cor }}</span>
