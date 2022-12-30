@@ -35,5 +35,5 @@ npm install
 npm run serve
 ```
 
-Se tudo ocorrer bem, a aplicação estara disponível em [localhost:8080](http://localhost:8080)
+Se tudo ocorrer bem, a aplicação estará disponível em [localhost:8080](http://localhost:8080)
 
